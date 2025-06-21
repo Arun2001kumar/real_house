@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Properties | Real House{% endblock %}
+{% block content %}
+<h2>Available Properties</h2>
+<div class="property-grid">
+    {% for property in properties %}
+    <div class="property-card">
+        <a href="/properties/{{ property.id }}">
+            <img src="{{ property.photo_url or '/static/images/placeholder-home.jpg' }}" alt="Property image">
+            <h3>{{ property.title }}</h3>
+            <p>${{ '{:,.0f}'.format(property.price) }}</p>
+            <p>{{ property.bedrooms }} beds | {{ property.bathrooms }} baths | {{ property.sqft }} sqft</p>
+            <p>{{ property.city }}, {{ property.state }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<a href="/">Back to Home</a>
+{% endblock %}

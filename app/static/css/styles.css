@@ -1,0 +1,596 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+
+.zillow-header {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 30px; /* Adjust as needed */
+    margin-right: 20px;
+}
+
+.main-nav a,
+.user-nav a {
+    color: #0074E4;
+    text-decoration: none;
+    padding: 8px 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.user-nav a:hover {
+    color: #0056b3;
+}
+
+/* Hero Section */
+.hero-section {
+    background-image: url('https://photos.zillowstatic.com/p_e/ISib0nc8z9vcb80000000000.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 70px 20px 0px 20px;
+    position: relative;
+}
+
+
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 4.5em;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.search-input {
+    width: 60%;
+    padding: 15px 20px;
+    border: none;
+    font-size: 1.1em;
+    outline: none;
+}
+
+.search-button {
+    background-color: #4ba2f4;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.search-button img {
+    height: 20px;
+    width: 18px;
+    filter: brightness(0) invert(1); /* Makes SVG white */
+}
+
+/* Main Content Area */
+.main-content {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #333;
+}
+
+/* Recommendations Section */
+.recommendations-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 0px;
+    padding: 20px 30px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 1170px;}
+
+.recommendation-text {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.recommendation-text h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.recommendation-text p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.sign-in-button {
+    background-color: #0074E4;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-button:hover {
+    background-color: #0056b3;
+}
+
+.recommendation-image {
+    flex: 1;
+    text-align: right;
+}
+
+.recommendation-image {
+    position: relative;
+    width: 300px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+}
+
+.recommended-card {
+    position: absolute;
+    width: 280px;
+    height: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.recommended-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.recommended-card-1 {
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.recommended-card-2 {
+    top: 20px;
+    left: 60px;
+    z-index: 1;
+}
+
+/* Buy Ability Section */
+.buy-ability-section {
+    background-color: #fff;
+    border-radius: 0px;
+    box-shadow: 0px 0px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 20px;
+    width: 1170px;
+}
+
+.main-content .buy-ability-section h2,
+.main-content .buy-ability-section p {
+    text-align: left;
+}
+
+.buy-ability-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.buy-ability-section p {
+    font-size: 1.1em;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.buy-ability-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* Prevent wrapping of the buy-ability-content */
+}
+
+.buy-ability-card {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 25px;
+    flex: 1;
+    width: 280px;
+    height: 300px; /* Adjust height to match original image */
+}
+
+.buy-ability-card h3 {
+    font-size: 1.5em;
+    color: #0074E4;
+    margin-bottom: 20px;
+}
+
+.buy-ability-card p {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.buy-ability-card p span {
+    font-weight: 700;
+    color: #000;
+}
+
+.get-started-button {
+    background-color: #0074E4;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.get-started-button:hover {
+    background-color: #0056b3;
+}
+
+.buy-ability-property-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    flex: 2;
+    padding-bottom: 10px; /* Add some padding for the scrollbar */
+}
+
+.buy-ability-property-grid .property-card {
+    flex: 0 0 280px; /* Fixed width for horizontal scrolling */
+}
+
+.property-card {
+    background-color: #f0f2f5;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    width: 280px;
+    height: 200px;
+}
+
+.property-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.property-card .buy-ability-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 116, 228, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+/* Info Cards Section */
+.info-cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.info-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-card img {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    font-size: 1.8em;
+    color: #0074E4;
+    margin-bottom: 15px;
+}
+
+.info-card p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.browse-button,
+.see-options-button,
+.find-rentals-button {
+    background-color: #0074E4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.browse-button:hover,
+.see-options-button:hover,
+.find-rentals-button:hover {
+    background-color: #0056b3;
+}
+
+/* Property Grid (retained for other uses if any) */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.property-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.property-card img {
+    width: 100%;
+    height: 3000px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.property-card h3 {
+    font-size: 1.4em;
+    margin: 15px 15px 5px;
+    color: #0074E4;
+}
+
+.property-card p {
+    font-size: 1em;
+    color: #555;
+    margin: 0 15px 10px;
+}
+
+.property-card p:last-child {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* About Zillow's Recommendations Section */
+.about-zillow-recommendations {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    margin-top: 40px;
+}
+
+.about-zillow-recommendations h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.about-zillow-recommendations p {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+.about-zillow-recommendations nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.about-zillow-recommendations nav a {
+    color: #0074E4;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.about-zillow-recommendations nav a:hover {
+    color: #0056b3;
+}
+
+/* Footer */
+.footer-links {
+    text-align: center;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.footer-links p {
+    font-size: 0.8em;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #0074E4;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.app-download {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.app-download img {
+    height: 40px;
+    margin: 0 10px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.social-media img {
+    height: 30px;
+}
+
+.social-media a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-media a img {
+    height: 24px;
+    width: 24px;
+}
+
+footer {
+    background-color: #fff;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+    font-size: 0.8em;
+    border-top: 1px solid #eee;
+}
+
+
+/* Existing styles for forms and details, adjusted for new theme */
+form {
+    background: #fff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 2em auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.8em;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    margin-bottom: 1.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button {
+    background-color: #0074E4;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.property-detail img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Utility classes for layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
