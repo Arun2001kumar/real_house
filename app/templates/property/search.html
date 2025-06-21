@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+{% block title %}Search Properties | Real House{% endblock %}
+{% block content %}
+<script src="/static/js/search.js" defer></script>
+<div class="search-page">
+    <div class="search-header">
+        <h1>Find Your Dream Home</h1>
+        <p>Search through {{ stats.total_count }} available properties</p>
+    </div>
+
+    <div class="search-container">
+        <form class="search-form" method="GET" action="/search">
+            <div class="search-row">
+                <div class="search-field">
+                    <label for="q">Search Location or Keywords</label>
+                    <input type="text" id="q" name="q" value="{{ search_params.q }}" 
+                           placeholder="Enter city, address, or ZIP code">
+                </div>
+                <div class="search-field">
+                    <label for="sort_by">Sort By</label>
+                    <select id="sort_by" name="sort_by">
+                        <option value="price_asc" {% if search_params.sort_by == 'price_asc' %}selected{% endif %}>Price: Low to High</option>
+                        <option value="price_desc" {% if search_params.sort_by == 'price_desc' %}selected{% endif %}>Price: High to Low</option>
+                        <option value="sqft_desc" {% if search_params.sort_by == 'sqft_desc' %}selected{% endif %}>Size: Largest First</option>
+                        <option value="sqft_asc" {% if search_params.sort_by == 'sqft_asc' %}selected{% endif %}>Size: Smallest First</option>
+                        <option value="bedrooms_desc" {% if search_params.sort_by == 'bedrooms_desc' %}selected{% endif %}>Most Bedrooms</option>
+                        <option value="newest" {% if search_params.sort_by == 'newest' %}selected{% endif %}>Newest First</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search-row">
+                <div class="search-field">
+                    <label for="min_price">Min Price</label>
+                    <input type="number" id="min_price" name="min_price" value="{{ search_params.min_price }}" 
+                           placeholder="$0" min="0" step="1000">
+                </div>
+                <div class="search-field">
+                    <label for="max_price">Max Price</label>
+                    <input type="number" id="max_price" name="max_price" value="{{ search_params.max_price }}" 
+                           placeholder="${{ '{:,.0f}'.format(stats.max_price) }}" min="0" step="1000">
+                </div>
+                <div class="search-field">
+                    <label for="bedrooms">Min Bedrooms</label>
+                    <select id="bedrooms" name="bedrooms">
+                        <option value="">Any</option>
+                        <option value="1" {% if search_params.bedrooms == '1' %}selected{% endif %}>1+</option>
+                        <option value="2" {% if search_params.bedrooms == '2' %}selected{% endif %}>2+</option>
+                        <option value="3" {% if search_params.bedrooms == '3' %}selected{% endif %}>3+</option>
+                        <option value="4" {% if search_params.bedrooms == '4' %}selected{% endif %}>4+</option>
+                        <option value="5" {% if search_params.bedrooms == '5' %}selected{% endif %}>5+</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="bathrooms">Min Bathrooms</label>
+                    <select id="bathrooms" name="bathrooms">
+                        <option value="">Any</option>
+                        <option value="1" {% if search_params.bathrooms == '1' %}selected{% endif %}>1+</option>
+                        <option value="1.5" {% if search_params.bathrooms == '1.5' %}selected{% endif %}>1.5+</option>
+                        <option value="2" {% if search_params.bathrooms == '2' %}selected{% endif %}>2+</option>
+                        <option value="2.5" {% if search_params.bathrooms == '2.5' %}selected{% endif %}>2.5+</option>
+                        <option value="3" {% if search_params.bathrooms == '3' %}selected{% endif %}>3+</option>
+                        <option value="4" {% if search_params.bathrooms == '4' %}selected{% endif %}>4+</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search-row">
+                <div class="search-field">
+                    <label for="min_sqft">Min Square Feet</label>
+                    <input type="number" id="min_sqft" name="min_sqft" value="{{ search_params.min_sqft }}" 
+                           placeholder="0" min="0" step="100">
+                </div>
+                <div class="search-field">
+                    <label for="max_sqft">Max Square Feet</label>
+                    <input type="number" id="max_sqft" name="max_sqft" value="{{ search_params.max_sqft }}" 
+                           placeholder="{{ stats.max_sqft }}" min="0" step="100">
+                </div>
+                <div class="search-field">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" value="{{ search_params.city }}" 
+                           placeholder="Enter city">
+                </div>
+                <div class="search-field">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" value="{{ search_params.state }}" 
+                           placeholder="Enter state">
+                </div>
+            </div>
+
+            <div class="search-actions">
+                <button type="submit" class="search-btn">Search Properties</button>
+                <a href="/search" class="clear-btn">Clear Filters</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="search-results">
+        <div class="results-header">
+            <h2>Search Results</h2>
+            <p>Found {{ results_count }} properties</p>
+        </div>
+
+        {% if properties %}
+        <div class="property-grid">
+            {% for property in properties %}
+            <div class="property-card">
+                <a href="/properties/{{ property.id }}">
+                    <img src="{{ property.photo_url or '/static/images/placeholder-home.jpg' }}" alt="Property image">
+                    <div class="property-info">
+                        <h3>{{ property.title }}</h3>
+                        <p class="price">${{ '{:,.0f}'.format(property.price) }}</p>
+                        <p class="details">{{ property.bedrooms }} beds | {{ property.bathrooms }} baths | {{ '{:,}'.format(property.sqft) }} sqft</p>
+                        <p class="location">{{ property.address }}</p>
+                        <p class="location">{{ property.city }}, {{ property.state }} {{ property.zip_code }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-results">
+            <h3>No properties found</h3>
+            <p>Try adjusting your search criteria or <a href="/search">clear all filters</a> to see all properties.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.search-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-header {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.search-header h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.search-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.search-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-field label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.search-field input,
+.search-field select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.search-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.search-btn {
+    background-color: #0074E4;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+.clear-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.clear-btn:hover {
+    background-color: #545b62;
+}
+
+.results-header {
+    margin-bottom: 20px;
+}
+
+.results-header h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.property-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.property-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.property-info {
+    padding: 20px;
+}
+
+.property-info h3 {
+    font-size: 1.4em;
+    color: #0074E4;
+    margin-bottom: 10px;
+}
+
+.property-info .price {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.property-info .details {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.property-info .location {
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.no-results h3 {
+    font-size: 1.8em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    color: #888;
+    font-size: 1.1em;
+}
+
+.no-results a {
+    color: #0074E4;
+    text-decoration: none;
+}
+
+.no-results a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .search-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-actions {
+        flex-direction: column;
+    }
+    
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

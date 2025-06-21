@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 # real_house
 =======
-# Real_House: Zillow-like Real Estate Platform
+# Real_House: Dream yours-like Real Estate Platform
 
 ## Features
 - Property search, filter, and detail pages

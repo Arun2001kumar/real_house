@@ -1,0 +1,6 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="80" height="80" fill="#dc3545" rx="8"/>
+  <path d="M40 15L20 30v35h15V50h10v15h15V30L40 15z" fill="white"/>
+  <path d="M30 40h20M30 45h15M30 50h12" stroke="#dc3545" stroke-width="1.5"/>
+  <text x="40" y="72" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">RENT</text>
+</svg>

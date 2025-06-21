@@ -1,0 +1,53 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyBg3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFA07A;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#FFE4E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#98FB98;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky and ground -->
+  <rect width="100%" height="100%" fill="url(#skyBg3)"/>
+  <rect x="0" y="180" width="100%" height="70" fill="#9ACD32"/>
+
+  <!-- Victorian style house -->
+  <g transform="translate(70,100)">
+    <!-- Main structure -->
+    <rect x="0" y="60" width="260" height="80" fill="#F0E68C"/>
+    <polygon points="0,60 130,25 260,60 260,65 0,65" fill="#8B0000"/>
+
+    <!-- Bay window -->
+    <polygon points="80,60 80,90 120,90 130,80 130,60" fill="#FFFACD"/>
+    <rect x="85" y="70" width="15" height="15" fill="#4169E1" opacity="0.8"/>
+    <rect x="105" y="70" width="15" height="15" fill="#4169E1" opacity="0.8"/>
+
+    <!-- Regular windows -->
+    <rect x="30" y="80" width="25" height="20" fill="#4169E1" opacity="0.8"/>
+    <rect x="170" y="80" width="25" height="20" fill="#4169E1" opacity="0.8"/>
+    <rect x="210" y="80" width="25" height="20" fill="#4169E1" opacity="0.8"/>
+
+    <!-- Front door with porch -->
+    <rect x="140" y="110" width="35" height="30" fill="#8B4513"/>
+    <circle cx="168" cy="125" r="2" fill="#FFD700"/>
+    <rect x="135" y="140" width="45" height="5" fill="#D2691E"/>
+
+    <!-- Decorative elements -->
+    <rect x="100" y="45" width="60" height="15" fill="#8B0000"/>
+  </g>
+
+  <!-- Landscaping -->
+  <g transform="translate(25,175)">
+    <rect x="0" y="12" width="7" height="18" fill="#8B4513"/>
+    <circle cx="3.5" cy="10" r="12" fill="#228B22"/>
+  </g>
+
+  <g transform="translate(350,180)">
+    <rect x="0" y="8" width="5" height="12" fill="#8B4513"/>
+    <circle cx="2.5" cy="6" r="9" fill="#32CD32"/>
+  </g>
+
+  <!-- Price tag -->
+  <rect x="10" y="10" width="80" height="25" fill="#dc3545" rx="5"/>
+  <text x="50" y="27" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="bold">$675,000</text>
+</svg>

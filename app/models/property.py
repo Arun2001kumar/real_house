@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, Float, String, Text
-from sqlalchemy import Column, Integer, String, Float, Text
 from app.database import Base
 
 class Property(Base):
@@ -17,3 +16,7 @@ class Property(Base):
     zip_code = Column(String)
     description = Column(Text)
     photo_url = Column(String)
+    latitude = Column(Float, nullable=True)  # For map integration
+    longitude = Column(Float, nullable=True)  # For map integration
+    property_type = Column(String, default="house")  # house, condo, townhouse, etc.
+    listing_type = Column(String, default="sale")  # sale, rent

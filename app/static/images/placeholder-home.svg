@@ -1,6 +1,9 @@
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="120" height="120" rx="16" fill="#E0E0E0"/>
-<path d="M30 80V60L60 40L90 60V80C90 82.2091 88.2091 84 86 84H34C31.7909 84 30 82.2091 30 80Z" fill="#BDBDBD"/>
-<rect x="50" y="68" width="20" height="16" rx="2" fill="#9E9E9E"/>
-<rect x="38" y="72" width="8" height="8" rx="2" fill="#9E9E9E"/>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  <rect x="50" y="100" width="300" height="150" fill="#0074E4" opacity="0.1"/>
+  <path d="M200 80L100 150v100h80v-60h40v60h80V150L200 80z" fill="#0074E4"/>
+  <rect x="170" y="180" width="20" height="30" fill="#fff"/>
+  <rect x="140" y="160" width="15" height="15" fill="#fff"/>
+  <rect x="245" y="160" width="15" height="15" fill="#fff"/>
+  <text x="200" y="270" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">Dream yours Property</text>
 </svg>

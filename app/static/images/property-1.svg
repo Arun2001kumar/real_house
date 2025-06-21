@@ -1,0 +1,49 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#B0E0E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#98FB98;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky and ground -->
+  <rect width="100%" height="100%" fill="url(#skyBg)"/>
+  <rect x="0" y="180" width="100%" height="70" fill="#90EE90"/>
+
+  <!-- Modern house -->
+  <g transform="translate(80,120)">
+    <!-- Main structure -->
+    <rect x="0" y="40" width="240" height="80" fill="#F5F5DC"/>
+    <polygon points="0,40 120,10 240,40 240,45 0,45" fill="#8B4513"/>
+
+    <!-- Windows -->
+    <rect x="20" y="60" width="30" height="25" fill="#4169E1" opacity="0.8"/>
+    <rect x="70" y="60" width="30" height="25" fill="#4169E1" opacity="0.8"/>
+    <rect x="130" y="60" width="30" height="25" fill="#4169E1" opacity="0.8"/>
+    <rect x="180" y="60" width="30" height="25" fill="#4169E1" opacity="0.8"/>
+
+    <!-- Door -->
+    <rect x="105" y="90" width="30" height="30" fill="#8B4513"/>
+    <circle cx="128" cy="105" r="2" fill="#FFD700"/>
+
+    <!-- Garage -->
+    <rect x="160" y="90" width="60" height="30" fill="#D3D3D3"/>
+    <rect x="170" y="100" width="40" height="15" fill="#696969"/>
+  </g>
+
+  <!-- Trees and landscaping -->
+  <g transform="translate(30,160)">
+    <rect x="0" y="20" width="8" height="25" fill="#8B4513"/>
+    <circle cx="4" cy="18" r="15" fill="#228B22"/>
+  </g>
+
+  <g transform="translate(350,170)">
+    <rect x="0" y="15" width="6" height="20" fill="#8B4513"/>
+    <circle cx="3" cy="13" r="12" fill="#32CD32"/>
+  </g>
+
+  <!-- Price tag -->
+  <rect x="10" y="10" width="80" height="25" fill="#0074E4" rx="5"/>
+  <text x="50" y="27" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="bold">$450,000</text>
+</svg>

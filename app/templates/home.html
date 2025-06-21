@@ -4,10 +4,10 @@
 <div class="hero-section">
     <div class="hero-content">
         <h1>Agents. Tours. Loans. Homes.</h1>
-        <div class="search-bar-container">
-            <input type="text" placeholder="Enter an address, neighborhood, city, or ZIP code" class="search-input">
-            <button class="search-button"><img src="/static/images/search-icon.svg" alt="Search"></button>
-        </div>
+        <form class="search-bar-container" method="GET" action="/map-search">
+            <input type="text" name="q" placeholder="Enter an address, neighborhood, city, or ZIP code" class="search-input">
+            <button type="submit" class="search-button"><img src="/static/images/search-icon.svg" alt="Search"></button>
+        </form>
     </div>
 </div>
 <div class="main-content">
@@ -32,7 +32,7 @@
         <p>Answer a few questions. We'll highlight homes you're ready to qualify for.</p>
         <div class="buy-ability-content">
             <div class="buy-ability-card">
-                <h3>Zillow Home Loans</h3>
+                <h3>Dream yours Home Loans</h3>
                 <p><span>$--</span> Suggested target price</p>
                 <p><span>$--</span> Mo. payment</p>
                 <p><span>--%</span> Today's rate</p>
@@ -41,15 +41,15 @@
             </div>
             <div class="buy-ability-property-grid">
                 <div class="property-card">
-                    <img src="https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/ef8d30a2087d1819248ef12accb5f15b-full.jpg" alt="Property Image">
+                    <img src="/static/images/property-1.svg" alt="Property Image">
                     <p class="buy-ability-tag">Within BuyAbility</p>
                 </div>
                 <div class="property-card">
-                    <img src="https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/5ef88b0a39f2b87dec9cba7fcf1d9711-full.jpg" alt="Property Image">
+                    <img src="/static/images/property-2.svg" alt="Property Image">
                     <p class="buy-ability-tag">Within BuyAbility</p>
                 </div>
                 <div class="property-card">
-                    <img src="https://www.trulia.com/pictures/thumbs_5/zillowstatic/fp/8199793fe98d5b0a35592e8b187b6de3-full.jpg" alt="Property Image">
+                    <img src="/static/images/property-3.svg" alt="Property Image">
                     <p class="buy-ability-tag">Within BuyAbility</p>
                 </div>
             </div>
@@ -61,7 +61,7 @@
             <img src="/static/images/buy-home.svg" alt="Buy a home">
             <h3>Buy a home</h3>
             <p>Find your place with an immersive photo experience and the most listings, including things you won't find anywhere else.</p>
-            <button class="browse-button">Browse homes</button>
+            <a href="/map-search" class="browse-button">Browse homes</a>
         </div>
         <div class="info-card">
             <img src="/static/images/sell-home.svg" alt="Sell a home">
@@ -73,14 +73,14 @@
             <img src="/static/images/rent-home.svg" alt="Rent a home">
             <h3>Rent a home</h3>
             <p>We're creating a seamless online experience - from shopping on the largest rental network, to applying, to paying rent.</p>
-            <button class="find-rentals-button">Find rentals</button>
+            <a href="/map-search?listing_type=rent" class="find-rentals-button">Find rentals</a>
         </div>
     </div>
 
     </div>
 
-    <div class="about-zillow-recommendations">
-        <h2>About Zillow's Recommendations</h2>
+    <div class="about-dream-yours-recommendations">
+        <h2>About Dream yours's Recommendations</h2>
         <p>Recommendations are based on your location and search activity, such as the homes you've viewed and saved and the filters you've used. We use this information to bring similar homes to your attention, so you don't miss out.</p>
         <nav>
             <a href="#">Real Estate &#9662;</a>
@@ -90,7 +90,7 @@
         </nav>
         <nav>
             <a href="#">About</a>
-            <a href="#">Zestimates</a>
+            <a href="#">Dream Estimates</a>
             <a href="#">Research</a>
             <a href="#">Careers</a>
             <a href="#">Careers</a>
@@ -116,9 +116,9 @@
     </div>
 
     <div class="footer-links">
-        <p>Zillow Group is committed to ensuring digital accessibility for individuals with disabilities. We are continuously working to improve the accessibility of our web experience for everyone, and we welcome feedback and accommodation requests. If you wish to report an issue or seek an accommodation, please <a href="#">contact us</a>.</p>
-        <p>Copyright © 2006-2024 Zillow. All rights reserved. Zillow, Inc. holds real estate brokerage licenses in multiple states. <a href="#">A list of our real estate licenses is available here</a>. <a href="#">TREC: Information about brokerage services</a>, <a href="#">Consumer protection notice</a>. California DRE #1522444.</p>
-        <p><a href="#">Contact Zillow, Inc. Brokerage</a></p>
+        <p>Dream yours Group is committed to ensuring digital accessibility for individuals with disabilities. We are continuously working to improve the accessibility of our web experience for everyone, and we welcome feedback and accommodation requests. If you wish to report an issue or seek an accommodation, please <a href="#">contact us</a>.</p>
+        <p>Copyright © 2006-2024 Dream yours. All rights reserved. Dream yours, Inc. holds real estate brokerage licenses in multiple states. <a href="#">A list of our real estate licenses is available here</a>. <a href="#">TREC: Information about brokerage services</a>, <a href="#">Consumer protection notice</a>. California DRE #1522444.</p>
+        <p><a href="#">Contact Dream yours, Inc. Brokerage</a></p>
     </div>
 
     <div class="app-download">
@@ -127,7 +127,7 @@
     </div>
 
     <div class="social-media">
-        <img src="/static/images/zillow-logo.svg" alt="Zillow Logo">
+        <img src="/static/images/dream-yours-logo.svg" alt="Dream yours Logo">
         <a href="#"><img src="/static/images/facebook.svg" alt="Facebook"></a>
         <a href="#"><img src="/static/images/instagram.svg" alt="Instagram"></a>
         <a href="#"><img src="/static/images/tiktok.svg" alt="TikTok"></a>

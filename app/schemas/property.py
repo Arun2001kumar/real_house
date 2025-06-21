@@ -13,6 +13,10 @@ class PropertyBase(BaseModel):
     zip_code: str
     description: Optional[str] = None
     photo_url: Optional[str] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    property_type: Optional[str] = "house"
+    listing_type: Optional[str] = "sale"
 
 class PropertyCreate(PropertyBase):
     pass

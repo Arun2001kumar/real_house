@@ -6,16 +6,19 @@
     <title>{% block title %}Real House{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <script src="/static/js/search.js" defer></script>
 </head>
 <body>
-    <header class="zillow-header">
+    <header class="dream-yours-header">
         <div class="header-left">
             <a href="/" class="logo">
-                <img src="/static/images/zillow-logo.svg" alt="Zillow Logo">
+                <img src="/static/images/dream-yours-logo.svg" alt="Dream yours Logo">
             </a>
             <nav class="main-nav">
-                <a href="/buy">Buy</a>
-                <a href="/rent">Rent</a>
+                <a href="/map-search">Search</a>
+                <a href="/properties">Properties</a>
+                <a href="/map-search?listing_type=sale">Buy</a>
+                <a href="/map-search?listing_type=rent">Rent</a>
                 <a href="/sell">Sell</a>
                 <a href="/mortgage">Get a mortgage</a>
                 <a href="/agents">Find an Agent</a>

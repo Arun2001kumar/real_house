@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+{% block title %}Search Properties | Dream yours{% endblock %}
+
+{% block head %}
+<!-- Custom Search CSS -->
+<style>
+/* Search Overlay - Centered */
+.search-overlay {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 20px;
+    min-width: 700px;
+    max-width: 90vw;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main-search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.search-filters-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-dropdown {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+    min-width: 100px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.search-btn {
+    background: #006aff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.search-btn:hover {
+    background: #0056cc;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    height: calc(100vh - 80px);
+    position: relative;
+}
+
+/* Left Panel - Map */
+.map-panel {
+    width: 50%;
+    position: relative;
+    background: #f0f0f0;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    background: #e8e8e8;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 18px;
+}
+
+.results-count-overlay {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 100;
+}
+
+/* Right Panel - Property Listings */
+.listings-panel {
+    width: 50%;
+    background: white;
+    overflow-y: auto;
+    border-left: 1px solid #e0e0e0;
+}
+
+.listings-header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.listings-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.listings-count {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+.sort-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+    color: #006aff;
+    font-weight: 600;
+}
+
+.property-list {
+    padding: 0 20px 20px;
+}
+
+/* Property List Items */
+.property-item {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.property-item:hover {
+    background-color: #f8f9fa;
+}
+
+.property-item:last-child {
+    border-bottom: none;
+}
+
+.property-image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.property-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.property-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.property-specs {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.property-address {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.property-features {
+    display: flex;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.feature-item {
+    font-size: 12px;
+    color: #666;
+    background: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+
+
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .search-overlay {
+        min-width: 90vw;
+        padding: 15px;
+        top: 10px;
+    }
+
+    .search-filters-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .filter-dropdown {
+        min-width: 100%;
+    }
+
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .map-panel {
+        width: 100%;
+        height: 300px;
+        order: 2;
+    }
+
+    .listings-panel {
+        width: 100%;
+        order: 1;
+        border-left: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .property-item {
+        flex-direction: column;
+    }
+
+    .property-image {
+        width: 100%;
+        height: 200px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Search Overlay -->
+<div class="search-overlay">
+    <form id="search-form" class="search-form">
+        <input type="text" id="location-search" name="q" class="main-search-input"
+               placeholder="Address, neighborhood, city, ZIP"
+               value="{{ search_params.q }}">
+
+        <div class="search-filters-row">
+            <select id="listing_type" name="listing_type" class="filter-dropdown">
+                <option value="">For Sale ▼</option>
+                <option value="sale" {% if search_params.listing_type == 'sale' %}selected{% endif %}>For Sale</option>
+                <option value="rent" {% if search_params.listing_type == 'rent' %}selected{% endif %}>For Rent</option>
+            </select>
+
+            <select id="price_range" name="price_range" class="filter-dropdown">
+                <option value="">Price ▼</option>
+                <option value="0-200000">Under $200K</option>
+                <option value="200000-400000">$200K - $400K</option>
+                <option value="400000-600000">$400K - $600K</option>
+                <option value="600000+">$600K+</option>
+            </select>
+
+            <select id="bedrooms" name="bedrooms" class="filter-dropdown">
+                <option value="">Beds & Baths ▼</option>
+                <option value="1" {% if search_params.bedrooms == '1' %}selected{% endif %}>1+ beds</option>
+                <option value="2" {% if search_params.bedrooms == '2' %}selected{% endif %}>2+ beds</option>
+                <option value="3" {% if search_params.bedrooms == '3' %}selected{% endif %}>3+ beds</option>
+                <option value="4" {% if search_params.bedrooms == '4' %}selected{% endif %}>4+ beds</option>
+                <option value="5" {% if search_params.bedrooms == '5' %}selected{% endif %}>5+ beds</option>
+            </select>
+
+            <select id="home_type" name="home_type" class="filter-dropdown">
+                <option value="">Home Type ▼</option>
+                <option value="house">House</option>
+                <option value="condo">Condo</option>
+                <option value="townhouse">Townhouse</option>
+            </select>
+
+            <select id="more_filters" name="more_filters" class="filter-dropdown">
+                <option value="">More ▼</option>
+            </select>
+        </div>
+
+        <button type="submit" class="search-btn">Save search</button>
+    </form>
+</div>
+
+<!-- Main Container - Split Layout -->
+<div class="main-container">
+    <!-- Left Panel - Map -->
+    <div class="map-panel">
+        <div class="results-count-overlay">{{ results_count }} of {{ stats.total_count }} homes</div>
+        <div class="map-container">
+            <!-- Map would go here - placeholder for now -->
+            <div>Interactive Map View</div>
+        </div>
+    </div>
+
+    <!-- Right Panel - Property Listings -->
+    <div class="listings-panel">
+        <div class="listings-header">
+            <h1 class="listings-title">Real Estate & Homes For Sale</h1>
+            <div class="listings-count">{{ stats.total_count }} results</div>
+            <div class="sort-controls">
+                <span class="sort-label">Sort:</span>
+                <select class="sort-dropdown">
+                    <option>Homes for You</option>
+                    <option>Price (Low to High)</option>
+                    <option>Price (High to Low)</option>
+                    <option>Newest</option>
+                    <option>Bedrooms</option>
+                    <option>Bathrooms</option>
+                    <option>Square Feet</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="property-list">
+            {% for property in properties %}
+            <div class="property-item" data-id="{{ property.id }}" onclick="selectProperty(this)">
+                <img src="{{ property.photo_url or '/static/images/placeholder-home.svg' }}"
+                     alt="Property image" class="property-image">
+                <div class="property-details">
+                    <div class="property-price">${{ '{:,.0f}'.format(property.price) }}</div>
+                    <div class="property-specs">{{ property.bedrooms }} bds | {{ property.bathrooms }} ba | {{ '{:,}'.format(property.sqft) }} sqft - House for sale</div>
+                    <div class="property-address">{{ property.address }}, {{ property.city }}, {{ property.state }} {{ property.zip_code }}</div>
+                    <div class="property-features">
+                        <span class="feature-item">27 days on Dream your's</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Search JavaScript -->
+<script>
+function selectProperty(element) {
+    // Remove active class from all property cards
+    document.querySelectorAll('.property-card').forEach(card => {
+        card.classList.remove('active');
+    });
+
+    // Add active class to selected card
+    element.classList.add('active');
+
+    // Get property ID and redirect to property details page
+    const propertyId = element.dataset.id;
+    // You can redirect to a property details page here
+    // window.location.href = `/property/${propertyId}`;
+}
+
+// Handle form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle search form submission
+            const formData = new FormData(this);
+            const params = new URLSearchParams(formData);
+            window.location.href = '/map-search?' + params.toString();
+        });
+    }
+});
+</script>
+{% endblock %}

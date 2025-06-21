@@ -1,0 +1,6 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="80" height="80" fill="#0074E4" rx="8"/>
+  <path d="M40 15L20 30v35h15V50h10v15h15V30L40 15z" fill="white"/>
+  <rect x="35" y="35" width="10" height="10" fill="#0074E4"/>
+  <text x="40" y="72" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">BUY</text>
+</svg>

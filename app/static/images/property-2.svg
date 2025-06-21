@@ -1,0 +1,48 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyBg2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE4B5;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#FFEFD5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#90EE90;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky and ground -->
+  <rect width="100%" height="100%" fill="url(#skyBg2)"/>
+  <rect x="0" y="180" width="100%" height="70" fill="#98FB98"/>
+
+  <!-- Contemporary house -->
+  <g transform="translate(60,110)">
+    <!-- Main structure -->
+    <rect x="0" y="50" width="280" height="70" fill="#FFFAF0"/>
+    <polygon points="0,50 140,20 280,50 280,55 0,55" fill="#A0522D"/>
+
+    <!-- Large windows -->
+    <rect x="30" y="70" width="40" height="30" fill="#4682B4" opacity="0.7"/>
+    <rect x="90" y="70" width="40" height="30" fill="#4682B4" opacity="0.7"/>
+    <rect x="150" y="70" width="40" height="30" fill="#4682B4" opacity="0.7"/>
+    <rect x="210" y="70" width="40" height="30" fill="#4682B4" opacity="0.7"/>
+
+    <!-- Front door -->
+    <rect x="125" y="100" width="30" height="20" fill="#8B4513"/>
+    <circle cx="148" cy="110" r="1.5" fill="#FFD700"/>
+
+    <!-- Chimney -->
+    <rect x="220" y="30" width="15" height="25" fill="#8B4513"/>
+  </g>
+
+  <!-- Garden elements -->
+  <g transform="translate(20,170)">
+    <rect x="0" y="15" width="6" height="20" fill="#8B4513"/>
+    <circle cx="3" cy="13" r="10" fill="#FF69B4"/>
+  </g>
+
+  <g transform="translate(360,175)">
+    <rect x="0" y="10" width="5" height="15" fill="#8B4513"/>
+    <circle cx="2.5" cy="8" r="8" fill="#FFB6C1"/>
+  </g>
+
+  <!-- Price tag -->
+  <rect x="10" y="10" width="80" height="25" fill="#28a745" rx="5"/>
+  <text x="50" y="27" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="bold">$325,000</text>
+</svg>
